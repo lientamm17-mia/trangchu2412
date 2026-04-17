@@ -1,0 +1,493 @@
+/* chung */
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0; /* Được định nghĩa ở đầu file để Reset */
+    padding: 0;
+    background-color: #f0f9ff;
+}
+
+
+/* Gộp chung Header và Content để quản lý dễ hơn */
+header {
+    background-color: #D8EEFF;
+    padding: 15px 0; /* Giảm padding cho cân đối */
+}
+/*1 Flexbox*/
+.header-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 98%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+ 
+
+/* Container bao quanh logo và chữ */
+.logo-wrapper {
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    gap: 15px;            /* Khoảng cách vừa phải giữa ô logo và chữ */
+    margin-left: 20px;    /* Đẩy cụm logo ra xa mép trái một chút */
+}
+
+.logo-icon {
+    height: 70px;         /* Thu nhỏ lại một chút để thanh thoát hơn */
+    width: 70px; 
+    background-color: #ffffff; /* Nền trắng bắt buộc phải có */
+    padding: 0px;         /* Khoảng cách từ ảnh logo đến viền */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* VIỀN TRẮNG RÕ NÉT: Dùng border dày và sáng hơn */
+    border: 3px solid #ffffff; 
+    
+    /* BÓNG ĐỔ: Giúp ô trắng nổi bật trên nền Header xanh nhạt */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    
+    /* QUAN TRỌNG: Phải dùng 'normal' để viền trắng không bị trong suốt */
+    mix-blend-mode: normal; 
+    
+    object-fit: contain;
+    border-radius: 4px;    /* Bo góc nhẹ cho ô vuông trông hiện đại hơn */
+}
+
+.brand-name {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 26px;      
+    font-weight: 800;
+    color: #333;          /* Đổi màu chữ tối hơn để dễ đọc trên nền sáng */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+}
+.header-content h1 {
+    margin: 0;             /* Bỏ lề thừa */
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #333;
+    line-height: 1;        /* Giúp chữ không bị lệch so với icon */
+}
+
+/* Điều chỉnh lại nav-links để không bị lấn chỗ h1 */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px;                    /* Khoảng cách giữa các mục menu */
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333; 
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.nav-links a:hover {
+    color: #0068ff;
+}
+
+.mega-menu {
+    display: none; 
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    
+    width: 400px; 
+    background: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    /* 2 dùng Padding và Gap để tạo không gian thoáng đãng cho menu*/
+
+    padding: 30px 40px; 
+    gap: 60px; 
+    
+    z-index: 1000;
+    border-radius: 8px;
+    border-top: 4px solid #5DADE2;
+}
+
+
+.menu-col {
+    flex: 1; /* Chia đều không gian cho các cột */
+}
+
+/* . Dãn khoảng cách giữa các dòng chữ  trong cột */
+.menu-col a {
+    display: block;
+    margin-bottom: 15px; /* Dãn khoảng cách giữa các mục con theo chiều dọc */
+    font-size: 15px;
+    color: #555;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.menu-col a:hover {
+    color: #5DADE2;
+    padding-left: 5px; /* Hiệu ứng dịch nhẹ khi chạm vào cho sinh động */
+}
+
+/* . Dãn khoảng cách tiêu đề cột */
+.menu-col h4 {
+    margin-bottom: 25px; /* Đẩy phần chữ con xuống dưới xa tiêu đề hơn */
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* . Giữ nguyên hiệu ứng chạm hiện menu */
+.news-dropdown:hover .mega-menu {
+    display: flex; 
+}
+
+.news-dropdown {
+    position: relative;
+    padding-bottom: 15px; 
+}
+
+/* --- CỤM TIỆN ÍCH BÊN PHẢI --- */
+
+.nav-right-group {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end;  
+    gap: 10px;              
+    margin-left: 20px;
+    position: relative; 
+    transform: translateY(-7px); /* Số âm càng lớn thì càng cao lên */
+}
+
+
+.user-cart-icons {
+    display: flex;          
+    flex-direction: row;    
+    justify-content: flex-end; 
+    gap: 25px;              
+    width: 100%;            
+}
+
+
+/* Container bao quanh kính lúp */
+.search-dropdown {
+    position: relative;
+    padding-bottom: 15px; /* Tăng vùng đệm để di chuột không bị mất menu */
+}
+
+/* Hộp tìm kiếm */
+.search-mega-box {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    padding: 15px;
+    width: 320px; /* Tăng nhẹ độ rộng cho thoải mái */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 1000;
+    border-radius: 8px;
+    border-top: 4px solid #5DADE2;
+    
+    display: flex; 
+    align-items: center;
+    gap: 8px;
+
+    /* --- SỬA TẠI ĐÂY ĐỂ MƯỢT HƠN --- */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px); 
+    transition: all 0.3s ease;   /* Tạo độ trễ mượt mà */
+}
+
+/* Hiệu ứng Hover */
+.search-dropdown:hover .search-mega-box {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* Bay lên vị trí chuẩn */
+}
+
+/* Định dạng ô nhập liệu */
+.search-input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.search-input:focus {
+    border-color: #5DADE2; /* Viền xanh khi nhấn vào gõ */
+}
+
+/* Nút bấm trong hộp tìm kiếm */
+.search-btn-submit {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-btn-submit:hover {
+    background: #5DADE2;
+}
+/* Animation mượt mà */
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- PHẦN BANNER */
+.banner { 
+    text-align: center; 
+    padding: 30px 0; 
+}
+
+.banner-container {
+    position: relative; 
+    width: 850px;      /* Chiều rộng cố định của khung */
+    height: 500px;     /* THÊM DÒNG NÀY: Chiều cao cố định của khung */
+    margin: 0 auto;
+    overflow: hidden;
+    border: 5px solid white;
+    border-radius: 8px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.banner-container img { 
+    width: 100%;       /* Ảnh luôn rộng bằng khung */
+    height: 100%;      /* Ảnh luôn cao bằng khung */
+    display: block;
+    object-fit: cover; /* QUAN TRỌNG: Giúp ảnh không bị méo, tự cắt gọn để vừa khung */
+    filter: brightness(0.85); 
+}
+
+
+.banner-overlay {
+    position: absolute;
+    top: 50%;          
+    left: 10%;          
+    transform: translateY(-50%); /* căn chữ*/ 
+    color: white;
+    text-align: left;  
+    z-index: 2;
+}
+
+.banner-overlay h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5); 
+}
+
+/* Dòng chữ Sale  */
+.banner-overlay .promo-text {
+    font-size: 45px;
+    font-weight: 800;
+    color: #eae15d;    
+    margin-bottom: 20px;
+    display: block;
+}
+
+ 
+ 
+/* Nút bấm  */
+.btn-banner {
+    display: inline-block;
+    padding: 10px 25px;
+    background: white;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.divider { 
+    width: 80%; 
+    border: 1px solid #D8EEFF; 
+    margin: 30px auto 0; 
+}
+
+
+/* Đưa tiêu đề sản phẩm nổi bật ra giữa */
+.section-title {
+    text-align: center;
+    margin: 40px 0 20px 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    width: 100%; 
+}
+/*Flexbox*/
+.product-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;             /* BOX MODEL: Khoảng cách giữa các Margin của các item */
+    padding: 0 50px;       /* BOX MODEL: Đẩy toàn bộ lưới sản phẩm cách mép trang 50px */
+}
+
+
+/* 1Mô hình Box Model (Quản lý không gian)*/
+
+.product-item {
+    background: white; 
+    padding: 12px;             
+    width: 220px;           
+    border-radius: 20px;    /* Giữ nguyên bo góc */
+    overflow: hidden;       /* BẮT BUỘC: Để ảnh không bị đè lên góc bo của khung */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0f0f0; /* Thêm viền rất nhạt để phân tách nền trắng */
+}
+
+/* . ẢNH SẢN PHẨM: Ép tràn khung */
+.product-item img { 
+    width: 100%; 
+    height: 300px;          /* Cố định chiều cao để các hộp đều nhau */
+    display: block;         /* Loại bỏ khoảng hở nhỏ dưới chân ảnh */
+    object-fit: cover;      /* Giúp ảnh không bị méo khi tràn khung */
+    border-radius: 20px;
+   border: 1px solid #eee; /* Viền mỏng để thấy rõ góc bo */
+}
+
+/* 1,Mô hình Box Model (Quản lý không gian) \
+/dùng Box Model để đảm bảo chữ không bị dính sát vào mép khung.\
+
+/* 3. THÔNG TIN SẢN PHẨM */
+.product-info {
+    position: relative;
+    padding: 15px;          /* Tạo khoảng cách cho tên, giá, sao không dính mép */
+    text-align: left; 
+}
+/* Định vị sao xuống góc dưới bên phải */
+.rating {
+    position: absolute;
+    bottom: 12px;    /* Cách đáy */
+    right: 12px;     /* Cách lề phải */
+    display: flex;
+    align-items: center;
+    gap: 2px;        /* Khoảng cách giữa các ngôi sao */
+}
+.rating i {
+    color: #121211;  
+    font-size: 11px; /* Kích thước sao nhỏ gọn */
+}
+
+.product-meta {
+    display: block; /* Chuyển về block để không bị xung đột với absolute */
+}
+
+.sold {
+    font-size: 12px;
+    color: #888;
+    display: block;
+    margin-top: 5px;
+}
+/* --- CSS CHO LINK SẢN PHẨM --- */
+.product-link {
+    text-decoration: none; 
+    color: inherit;        
+    display: block;       
+}
+/* Hiệu ứng khi di chuột vào sản phẩm */
+.product-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.product-item:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+    transform: translateY(-5px);
+/*em dùng Transition kết hợp với Hover để khi khách hàng rê chuột vào sản phẩm, nó sẽ bay lên và đổ bóng*/          
+    cursor: pointer;                     
+}
+
+.product-item img { width: 100%; border-radius: 4px; }
+.price { color: #5DADE2; font-weight: bold; }
+
+/* --- FOOTER 3 CỘT MỚI --- */
+/* Container bao quanh toàn bộ nội dung chân trang */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  grid-template-columns: repeat(4, 1fr); /* Chia làm 4 cột đều nhau */
+  padding: 0px 80px;
+  padding-top: 30px;
+}
+
+/* Định dạng từng cột nội dung (Liên hệ, Hỗ trợ, Kết nối...) */
+.footer-section {
+  width: 23%;
+}
+
+.footer-section h3 {
+  margin-bottom: 15px;
+}
+
+.footer-section p {
+  margin: 6px 0;
+}
+
+/* Danh sách mạng xã hội */
+.social-list {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.social-list a {
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 5px 0;
+}
+
+/* Tăng kích thước Icon cho rõ nét */
+.social-list a i {
+  font-size: 30px; 
+  width: 30px; 
+  text-align: center;
+}
+
+/* Màu sắc nhận diện thương hiệu cho từng icon */
+.z-icon { color: #0068ff; }   /* Màu xanh Zalo */
+.fb-icon { color: #1877f2; }  /* Màu xanh Facebook */
+.ins-icon { color: #e4405f; } /* Màu hồng Instagram */
+
+/* Hiệu ứng phóng to nhẹ khi di chuột vào icon */
+.social-list a:hover i {
+  transform: scale(1.2); 
+  transition: 0.3s;
+}
+
+/* Logo các đơn vị thanh toán */
+.payment img {
+  width: 50px;
+  margin-right: 8px;
+}
+
+/* Dòng bản quyền cuối cùng của trang web */
+.footer-bottom {
+  text-align: center;
+  margin-top: 80px;
+  border-top: 1px solid white;
+  padding-top: 20px;
+}
